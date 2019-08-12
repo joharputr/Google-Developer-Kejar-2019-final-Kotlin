@@ -1,5 +1,7 @@
 package com.example.submission2.TVshow
 
+import android.database.sqlite.SQLiteConstraintException
+import android.provider.SyncStateContract.Helpers.insert
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +14,11 @@ import kotlinx.android.synthetic.main.tvlist.view.*
 import java.util.*
 
 
+
 class tvAdapter(
         val itemList: ArrayList<ResultsItemTv>,
         private val onClick: (ResultsItemTv) -> Unit
 ) : RecyclerView.Adapter<tvAdapter.movieHolder>() {
-
     fun setData(items: ArrayList<ResultsItemTv>) {
         itemList.clear()
         itemList.addAll(items)
@@ -29,8 +31,11 @@ class tvAdapter(
             tv_item_deskriptionTv.text = item.overview
             Glide.with(img_item_photoTV.context).load("https://image.tmdb.org/t/p/w185" + item.backdropPath)
                     .into(img_item_photoTV)
+
+
+            val helper = DbHelper(context)
             btnFav.setOnClickListener {
-          //      DbHelper.saveToDb(item.name!!,item.overview!!)
+                helper.populatePerson(item)
                 Toast.makeText(context, "" + item.name + " has been added to Favorite TV list", Toast.LENGTH_SHORT).show()
             }
         }
@@ -54,4 +59,6 @@ class tvAdapter(
             onClick(item)
         }
     }
+
+
 }
