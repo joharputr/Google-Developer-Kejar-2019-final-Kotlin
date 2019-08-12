@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">sub2</string>
+    <string name="hello_world">" "</string>
+    <string name="good_morning">" menemukan seorang bocah aneh yang dia bernama Goku. "</string>
+    <plurals name="numberOfSongsAvailable">
+        <item quantity="one">%d song found.</item>
+        <item quantity="other">%d songs found.</item>
+    </plurals>
+    <string name="app_homeurl">
+        Visit us at
+        <xliff:g id="application_homepage">https://dicoding.com</xliff:g>
+    </string>
+    <string name="change_language_settings">ubah bahasa</string>
+    <string name="title_activity_detail">Detail</string>
+
+    <string name="deskripsi">" bayaran Wade Wilson "</string>
+    <string name="nama">nama</string>
+    <string name="bumblebee">tranformers datang kembali pemirsah</string>
+
+    <string-array name="car_array">
+        <item>Audi</item>
+        <item>BMW</item>
+        <item>Benz</item>
+        <item>Ford</item>
+        <item>Toyota</item>
+        <item>Tesla</item>
+        <item>Honda</item>
+        <item>Hyundai</item>
+    </string-array>
+    <string name="avenger">" Ketika Avengers dan sekutu mereka terus melindungi dunia dari ancaman yang terlalu besar "
+    </string>
+    <string name="aquaman">"Dulunya merupakan rumah bagi peradaban paling maju di Bumi "
+    </string>
+    <string name="creed">" Mantan Juara Kelas Berat Dunia, Rocky Balboa, bertindak sebagai pelatih dan mentor bagi
+        Adonis Johnson "
+    </string>
+    <string name="venom">"Jurnalis investigasi Eddie Brock mencoba kembali setelah skandal, tetapi secara tidak sengaja
+        menjadi tuan rumah Venom "
+    </string>
+    <string name="spiderman">"Miles Morales menyulap hidupnya antara menjadi siswa sekolah menengah dan menjadi seorang
+        manusia laba-laba "
+    </string>
+    <string name="robinhood">"Seorang Tentara Salib yang diperkeras perang dan komandan Moornya melancarkan
+        pemberontakan "
+    </string>
+    <string name="hunterkiller">" Kapten Glass dari USS Arkansas menemukan bahwa kudeta di Rusia "</string>
+    <string name="dragonBall">" Dahulu kala di pegunungan, seorang master pertempuran yang dikenal sebagai Gohan"</string>
+    <string name="deadpool">" Deadpool menceritakan kisah asal usul mantan Pasukan Khusus yang berubah menjadi
+        tentara"
+    </string>
+
+    <string name="krypton">
+        dan dua generasi sebelum kehancuran planet rumah Man of Steel yang legendaris,
+    </string>
+    <string name="goblin">Seorang pendeta muda telah membentuk pesta pertualangan pertamanya, .
+    </string>
+    <string name="fspace">Seorang astronot bernama Gary dan sahabat karib Mooncake-nya
+    </string>
+    <string name="legacies">
+        Di tempat penyihir muda, vampir, dan manusia serigala
+    </string>
+    <string name="how">Sehubungan dengan MMORPG Cross Reverie, Sakamoto Takuma membual kekuatan yang luar biasa</string>
+    <string name="titans">
+        Sebuah tim pahlawan super muda yang dipimpin oleh Nightwing (sebelumnya Robin pertama Robin)</string>
+    <string name="siren">Kota pesisir Bristol Cove terkenal dengan legenda pernah menjadi rumah bagi putri duyung
+    </string>
+    <string name="sword">Karen Kohiruimaki selalu merasa tidak pada tempatnya di dunia nyata</string>
+    <string name="violet">Perang telah berakhir, dan Violet Evergarden membutuhkan pekerjaan
+    </string>
+    <string name="below">Setelah crash-landing di Bumi, dua alien remaja kerajaan di jalankan perjuangan</string>
+    <string name="movie">film</string>
+    <string name="pertunjukantv">pertunjukantv</string>
+</resources>
