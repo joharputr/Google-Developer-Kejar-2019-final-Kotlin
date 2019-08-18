@@ -5,16 +5,21 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class dataFav(
+data class dataFavTV(
+
+        @field:SerializedName("id")
+        val id: Int? = null,
+
+        @field:SerializedName("name")
+        val name: String? = null,
 
         @field:SerializedName("overview")
         val overview: String? = null,
 
         @field:SerializedName("backdrop_path")
-        val backdropPath: String? = null,
+        val backdropPath: String? = null
 
-        @field:SerializedName("name")
-        val name: String? = null
+
 
         /*   @field:SerializedName("original_name")
            val originalName: String? = null,

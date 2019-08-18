@@ -3,8 +3,6 @@ package com.example.submission2.TVshow
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.example.submission2.API.NetworkConfig
-import com.example.submission2.movie.Response
-import com.example.submission2.movie.ResultsItem
 import retrofit2.Call
 import retrofit2.Callback
 import java.util.ArrayList

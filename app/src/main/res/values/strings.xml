@@ -45,7 +45,8 @@
         pemberontakan "
     </string>
     <string name="hunterkiller">" Kapten Glass dari USS Arkansas menemukan bahwa kudeta di Rusia "</string>
-    <string name="dragonBall">" Dahulu kala di pegunungan, seorang master pertempuran yang dikenal sebagai Gohan"</string>
+    <string name="dragonBall">" Dahulu kala di pegunungan, seorang master pertempuran yang dikenal sebagai Gohan"
+    </string>
     <string name="deadpool">" Deadpool menceritakan kisah asal usul mantan Pasukan Khusus yang berubah menjadi
         tentara"
     </string>
@@ -62,7 +63,8 @@
     </string>
     <string name="how">Sehubungan dengan MMORPG Cross Reverie, Sakamoto Takuma membual kekuatan yang luar biasa</string>
     <string name="titans">
-        Sebuah tim pahlawan super muda yang dipimpin oleh Nightwing (sebelumnya Robin pertama Robin)</string>
+        Sebuah tim pahlawan super muda yang dipimpin oleh Nightwing (sebelumnya Robin pertama Robin)
+    </string>
     <string name="siren">Kota pesisir Bristol Cove terkenal dengan legenda pernah menjadi rumah bagi putri duyung
     </string>
     <string name="sword">Karen Kohiruimaki selalu merasa tidak pada tempatnya di dunia nyata</string>
@@ -71,4 +73,7 @@
     <string name="below">Setelah crash-landing di Bumi, dua alien remaja kerajaan di jalankan perjuangan</string>
     <string name="movie">film</string>
     <string name="pertunjukantv">pertunjukantv</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

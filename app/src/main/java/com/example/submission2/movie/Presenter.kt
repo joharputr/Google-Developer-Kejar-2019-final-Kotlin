@@ -1,6 +1,5 @@
 package com.example.submission2.movie
 
-import android.app.Application
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.example.submission2.API.NetworkConfig
@@ -9,8 +8,8 @@ import retrofit2.Callback
 import java.util.*
 
 class Presenter : ViewModel(){
-    var movies = ArrayList<ResultsItem>()
-    var mutableLiveData = MutableLiveData<List<ResultsItem>>()
+    var movies = ArrayList<ResultsItemMovie>()
+    var mutableLiveData = MutableLiveData<List<ResultsItemMovie>>()
     var status= MutableLiveData<Boolean>()
 
     init {
@@ -41,7 +40,7 @@ class Presenter : ViewModel(){
 
     }
 
-    fun setData() : MutableLiveData<List<ResultsItem>> {
+    fun setData() : MutableLiveData<List<ResultsItemMovie>> {
         return mutableLiveData
     }
     fun setStatus() : MutableLiveData<Boolean>{

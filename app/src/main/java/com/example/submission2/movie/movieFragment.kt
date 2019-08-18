@@ -21,11 +21,11 @@ class movieFragment : Fragment() {
 
     lateinit var mainViewModel: Presenter
 
-    private val movieData = ArrayList<ResultsItem>()
+    private val movieData = ArrayList<ResultsItemMovie>()
     private val adapterMovie = movieAdapter(movieData, this::onClick)
 
 
-    private fun onClick(data: ResultsItem) {
+    private fun onClick(data: ResultsItemMovie) {
         val intent = Intent(activity, Detail::class.java)
         intent.putExtra("DATA", data)
         startActivity(intent)
@@ -60,11 +60,12 @@ class movieFragment : Fragment() {
 
         })
 
-        mainViewModel.setData().observe(this, object : Observer<List<ResultsItem>> {
-            override fun onChanged(dataMovie: List<ResultsItem>?) {
+        mainViewModel.setData().observe(this, object : Observer<List<ResultsItemMovie>> {
+            override fun onChanged(dataMovie: List<ResultsItemMovie>?) {
                 if (dataMovie != null) {
-                    adapterMovie.setData(dataMovie as java.util.ArrayList<ResultsItem>)
-                    //        showLoading(false)
+                    adapterMovie.setData(dataMovie as java.util.ArrayList<ResultsItemMovie>)
+              //      movieData.clear()
+                    adapterMovie.notifyDataSetChanged()
                 }
             }
 

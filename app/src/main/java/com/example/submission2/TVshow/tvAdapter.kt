@@ -1,8 +1,7 @@
 package com.example.submission2.TVshow
 
-import android.database.sqlite.SQLiteConstraintException
-import android.provider.SyncStateContract.Helpers.insert
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +13,11 @@ import kotlinx.android.synthetic.main.tvlist.view.*
 import java.util.*
 
 
-
 class tvAdapter(
-        val itemList: ArrayList<ResultsItemTv>,
-        private val onClick: (ResultsItemTv) -> Unit
+    val itemList: ArrayList<ResultsItemTv>,
+    private val onClick: (ResultsItemTv) -> Unit
 ) : RecyclerView.Adapter<tvAdapter.movieHolder>() {
+
     fun setData(items: ArrayList<ResultsItemTv>) {
         itemList.clear()
         itemList.addAll(items)
@@ -26,20 +25,39 @@ class tvAdapter(
     }
 
     class movieHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+        //  private var isFavorite: Boolean = true
         fun bind(item: ResultsItemTv) = itemView.apply {
             tv_item_nameTv.text = item.name
             tv_item_deskriptionTv.text = item.overview
             Glide.with(img_item_photoTV.context).load("https://image.tmdb.org/t/p/w185" + item.backdropPath)
-                    .into(img_item_photoTV)
+                .into(img_item_photoTV)
 
 
             val helper = DbHelper(context)
+
             btnFav.setOnClickListener {
-                helper.populatePerson(item)
-                Toast.makeText(context, "" + item.name + " has been added to Favorite TV list", Toast.LENGTH_SHORT).show()
+                helper.removefromfav(item.id.toString())
+                Toast.makeText(context, "" + item.name + " delete from Favorite TV list", Toast.LENGTH_SHORT).show()
+                btnTambahFav.visibility = View.VISIBLE
+                btnFav.visibility = View.GONE
+
+            }
+
+
+            btnTambahFav.setOnClickListener {
+                Toast.makeText(context, "" + item.name + " has been added to Favorite TV list", Toast.LENGTH_SHORT)
+                    .show()
+                helper.addFavorite(item)
+                Log.d("test", "add = " + item)
+                btnTambahFav.visibility = View.GONE
+                btnFav.visibility = View.VISIBLE
+
             }
         }
+
+
     }
+
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): movieHolder {
         val inflater = LayoutInflater.from(p0.context)

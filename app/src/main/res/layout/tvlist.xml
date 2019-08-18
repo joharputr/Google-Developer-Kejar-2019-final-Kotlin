@@ -12,7 +12,6 @@
     android:layout_marginTop="16dp"
     android:layout_marginRight="15dp"
     android:background="@android:color/transparent">
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="142dp">
@@ -79,23 +78,48 @@
             app:layout_constraintVertical_bias="0.07999998" />
 
         <Button
-            android:id="@+id/btnFav"
+            android:id="@+id/btnTambahFav"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Favorite"
+            android:text="Tambah ke Favorite"
+            android:textColor="@android:color/black"
             android:textAllCaps="false"
             android:textSize="10dp"
+            android:background="@android:color/holo_green_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.43"
             app:layout_constraintStart_toEndOf="@+id/cardImageTV"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_deskriptionTv"
             app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+                android:visibility="gone"
+                android:textColor="@android:color/white"
+                android:id="@+id/btnFav"
+                android:background="@android:color/holo_red_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Favorite"
+                android:textAllCaps="false"
+                android:textSize="10dp"  app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.43"
+                app:layout_constraintStart_toEndOf="@+id/cardImageTV"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintTop_toBottomOf="@+id/tv_item_deskriptionTv"
+
+              />
 
 
     </android.support.constraint.ConstraintLayout>

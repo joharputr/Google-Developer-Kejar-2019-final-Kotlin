@@ -9,7 +9,7 @@ class GDK : Application() {
         lateinit var gson: Gson
         lateinit var api: ApiService
         //   lateinit var instance: GDK
-        lateinit var instance: GDK
+         var instance: GDK? = null;
     }
 
 

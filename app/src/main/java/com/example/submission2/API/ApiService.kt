@@ -1,9 +1,7 @@
 package com.example.submission2.API
 
-import android.arch.lifecycle.LiveData
 import com.example.submission2.TVshow.ResponseTV
 import com.example.submission2.movie.Response
-import com.example.submission2.movie.ResultsItem
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers

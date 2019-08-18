@@ -63,7 +63,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:maxLength="100"
+            android:maxLength="40"
             android:text="@string/deskripsi"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -72,6 +72,48 @@
             app:layout_constraintStart_toEndOf="@+id/cardImage"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_name"
             app:layout_constraintVertical_bias="0.01999998" />
+
+        <Button
+            android:id="@+id/btnTambahFavMovie"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@android:color/holo_green_light"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+
+            android:layout_marginBottom="8dp"
+            android:text="add To Favorite"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.65"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/btndeleteFavMovie"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@android:color/holo_blue_bright"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="delete Favorite"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.65"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
 
     </android.support.constraint.ConstraintLayout>

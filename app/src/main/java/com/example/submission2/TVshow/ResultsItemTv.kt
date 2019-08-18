@@ -9,9 +9,11 @@ import kotlinx.android.parcel.Parcelize
 data class ResultsItemTv(
 
 
+        @field:SerializedName("id")
+        val id: Int? = null,
+
         @field:SerializedName("overview")
         val overview: String? = null,
-
 
         @field:SerializedName("backdrop_path")
         val backdropPath: String? = null,
@@ -45,8 +47,7 @@ data class ResultsItemTv(
         val voteAverage: Double? = null,
 
 
-        @field:SerializedName("id")
-        val id: Int? = null,
+
 
         @field:SerializedName("vote_count")
         val voteCount: Int? = null*/

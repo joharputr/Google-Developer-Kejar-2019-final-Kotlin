@@ -8,7 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.example.submission2.TVshow.ResultsItemTv
-import com.example.submission2.movie.ResultsItem
+import com.example.submission2.movie.ResultsItemMovie
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class Detail : AppCompatActivity() {
@@ -16,7 +16,7 @@ class Detail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        val data: ResultsItem? = intent.getParcelableExtra("DATA")
+        val data: ResultsItemMovie? = intent.getParcelableExtra("DATA")
         val tv: ResultsItemTv? = intent.getParcelableExtra("tv")
 
         if (intent.hasExtra("DATA")) {

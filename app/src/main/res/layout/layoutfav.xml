@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    xmlns:tools="http://schemas.android.com/tools"
+                                    android:id="@+id/card_viewFav"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="19dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginRight="15dp"
+                                    android:background="@android:color/transparent">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+        <android.support.v7.widget.CardView
+                android:id="@+id/cardImageFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                    android:id="@+id/img_item_photoFav"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:foregroundGravity="center_horizontal"
+                    android:scaleType="centerCrop"/>
+        </android.support.v7.widget.CardView>
+
+
+        <TextView
+                android:id="@+id/tv_item_nameFav"
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:fontFamily="roboto"
+                android:gravity="center"
+                android:text="@string/nama"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardImageFav"
+                app:layout_constraintTop_toTopOf="@+id/cardImageFav"
+                tools:text="Soekarno"/>
+
+
+        <TextView
+            android:id="@+id/tv_item_deskriptionFav"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_nameFav"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:maxLength="100"
+            android:text="@string/deskripsi"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.58"
+            app:layout_constraintStart_toEndOf="@+id/cardImageFav"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_nameFav"
+            app:layout_constraintVertical_bias="0.01999998" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

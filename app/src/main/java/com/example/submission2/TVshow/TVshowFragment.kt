@@ -25,6 +25,7 @@ class TVshowFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tvshow, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,6 +39,7 @@ class TVshowFragment : Fragment() {
                 }
             }
         })
+
         viewModelTv.setStatus().observe(this, Observer {
             if (it ?: true) {
                 pBarTV.visibility = View.VISIBLE
