@@ -11,6 +11,7 @@ class PresenterTV : ViewModel(){
     var movies = ArrayList<ResultsItemTv>()
     var mutableLiveData = MutableLiveData<List<ResultsItemTv>>()
     var status= MutableLiveData<Boolean>()
+    private var movieResults: List<ResultsItemTv>? = ArrayList<ResultsItemTv>()
 
     init {
         data()

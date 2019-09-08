@@ -1,5 +1,6 @@
 package com.example.submission2.SQLite
 
+import android.database.Cursor
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
@@ -8,16 +9,16 @@ import kotlinx.android.parcel.Parcelize
 data class dataFavMovie(
 
     @field:SerializedName("id")
-    val id: Int? = null,
+    var id: Int? = null,
 
     @field:SerializedName("title")
-    val title: String? = null,
+    var title: String? = null,
 
     @field:SerializedName("overview")
-    val overview: String? = null,
+    var overview: String? = null,
 
     @field:SerializedName("backdrop_path")
-    val backdropPath: String? = null
+    var backdropPath: String? = null
 
     /*@field:SerializedName("original_language")
     val originalLanguage: String? = null,
@@ -53,6 +54,19 @@ data class dataFavMovie(
 
     @field:SerializedName("vote_count")
     val voteCount: Int? = null*/
+
+
 ) : Parcelable {
+    constructor(cursor: Cursor) : this() {
+        this.id = Base.newInstance().getColumnInt(cursor, Base.dataBaseSQl.COLUMN_NAME_ID)
+        this.title = Base.newInstance().getColumnString(cursor, Base.dataBaseSQl.COLUMN_NAME_TITLE)
+        this.overview =
+            Base.newInstance().getColumnString(cursor, Base.dataBaseSQl.COLUMN_NAME_DESC)
+        this.backdropPath =
+            Base.newInstance().getColumnString(cursor, Base.dataBaseSQl.COLUMN_NAME_IMAGE)
+    }
+
+
 
 }
+

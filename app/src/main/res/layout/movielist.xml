@@ -75,6 +75,7 @@
 
         <Button
             android:id="@+id/btnTambahFavMovie"
+            android:visibility="gone"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:background="@android:color/holo_green_light"

@@ -1,5 +1,6 @@
 package com.example.submission2.Favorite.MovieFav
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -7,9 +8,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.submission2.Detail
+import com.example.submission2.Favorite.DetailFav
 import com.example.submission2.SQLite.Base
 import com.example.submission2.SQLite.DbHelper
 import com.example.submission2.SQLite.dataFavMovie
+import com.example.submission2.movie.ResultsItemMovie
 import kotlinx.android.synthetic.main.fragment_moviesfav.*
 
 class MovieFragmentFav : Fragment() {
@@ -42,9 +46,15 @@ class MovieFragmentFav : Fragment() {
 
         rv_fav.layoutManager = LinearLayoutManager(context)
         rv_fav.setHasFixedSize(true)
-        adapter = MovieAdapterFav(context, fav)
+        adapter = MovieAdapterFav(context, this::onClick,fav)
         rv_fav.adapter = adapter
 
+    }
+
+    private fun onClick(data: dataFavMovie) {
+        val intent = Intent(activity, DetailFav::class.java)
+        intent.putExtra("DATA", data)
+        startActivity(intent)
     }
 
 }

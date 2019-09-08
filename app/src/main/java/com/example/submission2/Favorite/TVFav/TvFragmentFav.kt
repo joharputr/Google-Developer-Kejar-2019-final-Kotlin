@@ -1,5 +1,6 @@
 package com.example.submission2.Favorite.TVFav
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -7,8 +8,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.submission2.Detail
+import com.example.submission2.Favorite.DetailFav
 import com.example.submission2.SQLite.Base
 import com.example.submission2.SQLite.DbHelper
+import com.example.submission2.SQLite.dataFavMovie
 
 import com.example.submission2.SQLite.dataFavTV
 import kotlinx.android.synthetic.main.fragment_moviesfav.*
@@ -48,9 +52,16 @@ class TvFragmentFav : Fragment() {
 
         rv_fav.layoutManager = LinearLayoutManager(context)
         rv_fav.setHasFixedSize(true)
-        adapter = TvAdapterFav(context, fav)
+        adapter = TvAdapterFav(context,this::onCLick, fav)
         rv_fav.adapter = adapter
 
     }
+
+    private fun onCLick(data: dataFavTV) {
+        val intent = Intent(activity, DetailFav::class.java)
+        intent.putExtra("tv", data)
+        startActivity(intent)
+    }
+
 
 }

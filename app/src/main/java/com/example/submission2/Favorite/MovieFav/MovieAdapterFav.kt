@@ -9,9 +9,12 @@ import com.bumptech.glide.Glide
 import com.example.submission2.R
 import com.example.submission2.SQLite.dataFavMovie
 import com.example.submission2.SQLite.dataFavTV
+import com.example.submission2.movie.ResultsItemMovie
 import kotlinx.android.synthetic.main.layoutfav.view.*
 
-class MovieAdapterFav(val ctx: Context?, private val mList: List<dataFavMovie>):
+class MovieAdapterFav(val ctx: Context?,
+                      private val onClick: (dataFavMovie) -> Unit,
+                      private val mList: List<dataFavMovie>):
     RecyclerView.Adapter<MovieAdapterFav.FavHolder>()
 {
 
@@ -30,7 +33,11 @@ class MovieAdapterFav(val ctx: Context?, private val mList: List<dataFavMovie>):
     }
 
     override fun onBindViewHolder(holder: FavHolder, position: Int) {
+        val item = mList[position]
         holder.bind(mList[position])
+        holder.itemView.setOnClickListener {
+            onClick(item)
+        }
     }
 
     class FavHolder(v: View): RecyclerView.ViewHolder(v) {
@@ -41,6 +48,7 @@ class MovieAdapterFav(val ctx: Context?, private val mList: List<dataFavMovie>):
             Glide.with(img_item_photoFav.context).load("https://image.tmdb.org/t/p/w185" + item.backdropPath)
                 .into(img_item_photoFav)
         }
+
 
     }
 

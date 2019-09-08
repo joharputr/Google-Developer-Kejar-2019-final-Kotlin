@@ -1,4 +1,4 @@
-package com.example.submission2.TVshow
+package com.example.submission2.TVshow.SearchTV
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.submission2.R
+import com.example.submission2.TVshow.ResultsItemTv
 import kotlinx.android.synthetic.main.tvlist.view.*
-import kotlin.collections.ArrayList
 
-
-class tvAdapter(
+class SearchTvAdapter(
     val itemList: ArrayList<ResultsItemTv>?,
     private val onClick: (ResultsItemTv) -> Unit
-) : RecyclerView.Adapter<tvAdapter.tvHolder>() {
+) : RecyclerView.Adapter<SearchTvAdapter.tvHolder>() {
 
 
     fun setData(items: ArrayList<ResultsItemTv>) {

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.example.submission2.Favorite.FavoriteActivity
@@ -16,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewpager_main.adapter = pager(supportFragmentManager,baseContext)
+        viewpager_main.adapter = pager(supportFragmentManager, baseContext)
         tabs_main.setupWithViewPager(viewpager_main)
 
 
@@ -36,7 +35,8 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu to use in the action bar
         val inflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
-        return super.onCreateOptionsMenu(menu)
+        return true
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.FAVORITE -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
+                val intent = Intent(this, FavoriteActivity::class.java)
                 startActivity(intent)
                 return true
             }

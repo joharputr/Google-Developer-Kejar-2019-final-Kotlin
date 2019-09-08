@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.submission2.R
+import com.example.submission2.SQLite.dataFavMovie
 import com.example.submission2.SQLite.dataFavTV
 import kotlinx.android.synthetic.main.layoutfav.view.*
 import kotlinx.android.synthetic.main.movielist.view.*
 
-class TvAdapterFav(val ctx: Context?, private val mList: List<dataFavTV>):
+class TvAdapterFav(val ctx: Context?,
+                   private val onClick: (dataFavTV) -> Unit,
+                   private val mList: List<dataFavTV>):
     RecyclerView.Adapter<TvAdapterFav.FavHolder>()
 {
 
@@ -30,7 +33,11 @@ class TvAdapterFav(val ctx: Context?, private val mList: List<dataFavTV>):
     }
 
     override fun onBindViewHolder(holder: FavHolder, position: Int) {
+        val item = mList[position]
         holder.bind(mList[position])
+        holder.itemView.setOnClickListener {
+            onClick(item)
+        }
     }
 
     class FavHolder(v: View): RecyclerView.ViewHolder(v) {
