@@ -26,6 +26,8 @@ class DbHelper(context: Context?) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         }
     }
 
+
+
     fun getCursor(): Cursor {
         val columns = arrayOf<String>(
                 Base.dataBaseSQl.COLUMN_NAME_ID,
@@ -73,6 +75,7 @@ class DbHelper(context: Context?) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         values.put(Base.dataBaseSQl.COLUMN_NAME_DESC, users?.overview)
         values.put(Base.dataBaseSQl.COLUMN_NAME_IMAGE, users?.backdropPath)
         db.insert("GDK", null, values)
+
         db.close()
         Log.v("cekSQL ", " Record Inserted Sucessfully")
     }
@@ -85,6 +88,7 @@ class DbHelper(context: Context?) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         values.put(Base.dataBaseSQl.COLUMN_NAME_DESC, users?.overview)
         values.put(Base.dataBaseSQl.COLUMN_NAME_IMAGE, users?.backdropPath)
         db.insert("GDKMovie", null, values)
+
         db.close()
         Log.v("cekSQL GDKMovie ", " Record Inserted Sucessfully GDKMovie")
         GDK.instance?.let { sendUpdateFavoriteList(it) }

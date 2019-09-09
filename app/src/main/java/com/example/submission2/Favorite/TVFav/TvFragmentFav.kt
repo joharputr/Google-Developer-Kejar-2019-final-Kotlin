@@ -8,13 +8,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.submission2.Detail
 import com.example.submission2.Favorite.DetailFav
 import com.example.submission2.SQLite.Base
 import com.example.submission2.SQLite.DbHelper
-import com.example.submission2.SQLite.dataFavMovie
-
-import com.example.submission2.SQLite.dataFavTV
+import com.example.submission2.TVshow.ResultsItemTv
 import kotlinx.android.synthetic.main.fragment_moviesfav.*
 
 
@@ -24,8 +21,9 @@ class TvFragmentFav : Fragment() {
         fun newInstance() = TvFragmentFav()
     }
 
-    private var fav: MutableList<dataFavTV> = mutableListOf()
+    private var fav: MutableList<ResultsItemTv> = mutableListOf()
     private lateinit var adapter: TvAdapterFav
+    private var ResultsItemTv = ResultsItemTv()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,15 +33,23 @@ class TvFragmentFav : Fragment() {
         dbHelper.getCursor().use { cursor ->
             while (cursor.moveToNext()) {
                 val id = cursor.getInt(cursor.getColumnIndex(Base.dataBaseSQl.COLUMN_NAME_ID))
-                val name = cursor.getString(cursor.getColumnIndex(Base.dataBaseSQl.COLUMN_NAME_TITLE))
-                val description = cursor.getString(cursor.getColumnIndex(Base.dataBaseSQl.COLUMN_NAME_DESC))
-                val image = cursor.getString(cursor.getColumnIndex(Base.dataBaseSQl.COLUMN_NAME_IMAGE))
-                val dataFav1 = dataFavTV(id, name, description, image)
+                val name =
+                    cursor.getString(cursor.getColumnIndex(Base.dataBaseSQl.COLUMN_NAME_TITLE))
+                val description =
+                    cursor.getString(cursor.getColumnIndex(Base.dataBaseSQl.COLUMN_NAME_DESC))
+                val image =
+                    cursor.getString(cursor.getColumnIndex(Base.dataBaseSQl.COLUMN_NAME_IMAGE))
+                ResultsItemTv = ResultsItemTv()
+                val dataFav1 = ResultsItemTv(id, description, image, name)
                 Log.d(" itemTest = ", "" + dataFav1)
                 fav.addAll(listOf(dataFav1))
             }
         }
-        return inflater.inflate(com.example.submission2.R.layout.fragment_moviesfav, container, false)
+        return inflater.inflate(
+            com.example.submission2.R.layout.fragment_moviesfav,
+            container,
+            false
+        )
     }
 
 
@@ -52,12 +58,12 @@ class TvFragmentFav : Fragment() {
 
         rv_fav.layoutManager = LinearLayoutManager(context)
         rv_fav.setHasFixedSize(true)
-        adapter = TvAdapterFav(context,this::onCLick, fav)
+        adapter = TvAdapterFav(context, this::onCLick, fav)
         rv_fav.adapter = adapter
 
     }
 
-    private fun onCLick(data: dataFavTV) {
+    private fun onCLick(data: ResultsItemTv) {
         val intent = Intent(activity, DetailFav::class.java)
         intent.putExtra("tv", data)
         startActivity(intent)

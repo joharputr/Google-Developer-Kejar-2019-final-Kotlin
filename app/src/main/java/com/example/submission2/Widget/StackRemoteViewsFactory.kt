@@ -15,25 +15,33 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.example.submission2.R
 import com.example.submission2.SQLite.Base
-import com.example.submission2.SQLite.dataFavMovie
+import com.example.submission2.TVshow.ResultsItemTv
 import java.util.concurrent.ExecutionException
 
 
 /**
  * Implementation of App Widget functionality.
  */
+
 class StackRemoteViewsFactory(private val mContext: Context, intent: Intent) :
     RemoteViewsService.RemoteViewsFactory {
     private val mAppWidgetId: Int
     private var cursor: Cursor? = null
+    private val DbHelper = com.example.submission2.SQLite.DbHelper
 
+    private var list = ArrayList<String>()
+    val helper = com.example.submission2.SQLite.DbHelper(mContext)
+    val db = helper.getReadableDatabase()
 
     init {
         mAppWidgetId = intent.getIntExtra(
             AppWidgetManager.EXTRA_APPWIDGET_ID,
             AppWidgetManager.INVALID_APPWIDGET_ID
         )
+
+
     }
+
 
     override fun onCreate() {
 
@@ -65,9 +73,9 @@ class StackRemoteViewsFactory(private val mContext: Context, intent: Intent) :
             cursor!!.count
     }
 
-    private fun getItem(position: Int): dataFavMovie {
+    private fun getItem(position: Int): ResultsItemTv {
         check(cursor!!.moveToPosition(position)) { "Position Invalid" }
-        return dataFavMovie(cursor!!)
+        return ResultsItemTv(cursor!!)
     }
 
     override fun getViewAt(position: Int): RemoteViews? {
@@ -82,7 +90,7 @@ class StackRemoteViewsFactory(private val mContext: Context, intent: Intent) :
         val rv = RemoteViews(mContext.packageName, R.layout.item_widget)
 
         var bmp: Bitmap? = null
-        val movie_title = detailMovie.title
+        val movie_title = detailMovie.name
         try {
 
             bmp = Glide.with(mContext)

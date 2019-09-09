@@ -77,6 +77,13 @@
                     android:value=".MainActivity" />
         </activity>
 
+        <provider
+                android:name=".ContentProvider.FavouriteProvider"
+                android:authorities="com.example.submission2"
+                android:exported="true"
+                android:readPermission="com.example.submission2.READ_DATABASE"
+                android:writePermission="com.example.submission2.WRITE_DATABASE" />
+
         <activity
                 android:name=".MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
@@ -93,6 +100,8 @@
 
 
         </activity>
+
+
     </application>
 
 </manifest>

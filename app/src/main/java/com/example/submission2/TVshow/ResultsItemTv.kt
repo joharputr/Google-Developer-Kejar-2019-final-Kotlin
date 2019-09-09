@@ -1,7 +1,9 @@
 package com.example.submission2.TVshow
 
 
+import android.database.Cursor
 import android.os.Parcelable
+import com.example.submission2.SQLite.Base
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -10,16 +12,16 @@ data class ResultsItemTv(
 
 
         @field:SerializedName("id")
-        val id: Int? = null,
+        var id: Int? = null,
 
         @field:SerializedName("overview")
-        val overview: String? = null,
+        var overview: String? = null,
 
         @field:SerializedName("backdrop_path")
-        val backdropPath: String? = null,
+        var backdropPath: String? = null,
 
         @field:SerializedName("name")
-        val name: String? = null
+        var name: String? = null
 
      /*   @field:SerializedName("original_name")
         val originalName: String? = null,
@@ -51,4 +53,14 @@ data class ResultsItemTv(
 
         @field:SerializedName("vote_count")
         val voteCount: Int? = null*/
-) : Parcelable
+) : Parcelable{
+        constructor(cursor: Cursor) : this() {
+                this.id = Base.newInstance().getColumnInt(cursor, Base.dataBaseSQl.COLUMN_NAME_ID)
+                this.name = Base.newInstance().getColumnString(cursor, Base.dataBaseSQl.COLUMN_NAME_TITLE)
+                this.overview =
+                        Base.newInstance().getColumnString(cursor, Base.dataBaseSQl.COLUMN_NAME_DESC)
+                this.backdropPath =
+                        Base.newInstance().getColumnString(cursor, Base.dataBaseSQl.COLUMN_NAME_IMAGE)
+        }
+
+}

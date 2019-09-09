@@ -6,13 +6,8 @@ import android.provider.Settings
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.submission2.R
-import com.example.submission2.SQLite.DbHelper
-import com.example.submission2.SQLite.dataFavMovie
-import com.example.submission2.SQLite.dataFavTV
 import com.example.submission2.TVshow.ResultsItemTv
 import com.example.submission2.movie.ResultsItemMovie
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -22,15 +17,14 @@ class DetailFav : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailfav)
-        val data: dataFavMovie? = intent.getParcelableExtra("DATA")
-        val tv: dataFavTV? = intent.getParcelableExtra("tv")
+        val data: ResultsItemMovie? = intent.getParcelableExtra("DATA")
+        val tv: ResultsItemTv? = intent.getParcelableExtra("tv")
 
         if (intent.hasExtra("DATA")) {
             nama.text = data?.title
             deskription.text = data?.overview
             Glide.with(images.context).load("https://image.tmdb.org/t/p/w185" + data?.backdropPath)
                 .into(images)
-
 
 
         } else if (intent.hasExtra("tv")) {

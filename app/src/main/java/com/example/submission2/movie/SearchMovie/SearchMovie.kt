@@ -60,8 +60,8 @@ class SearchMovie : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Log.d("datagetmovie =", adapterMovie?.getMovie().toString());
-        outState.putParcelableArrayList("searchMovie", ArrayList(adapterMovie?.getMovie()))
+        Log.d("datagetmovie =", adapterMovie.getMovie().toString());
+        outState.putParcelableArrayList("searchMovie", ArrayList(adapterMovie.getMovie()))
 
     }
 
@@ -69,7 +69,7 @@ class SearchMovie : AppCompatActivity() {
     private fun prepareView() {
         adapterMovie = SearchMovieAdapter(list!!, this::onCLick)
         searchMovieRecycler.run {
-            Log.d("datasaat SItidak null =", adapterMovie?.getMovie().toString());
+            Log.d("datasaat SItidak null =", adapterMovie.getMovie().toString());
             layoutManager = LinearLayoutManager(context)
             adapter = adapterMovie
         }

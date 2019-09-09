@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -14,10 +15,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.submission2.Detail
-import com.example.submission2.TVshow.SearchTV.SearchTV
+import com.example.submission2.SQLite.Base
 import com.example.submission2.movie.SearchMovie.SearchMovie
 import kotlinx.android.synthetic.main.fragment_movies.*
-import kotlinx.android.synthetic.main.fragment_tvshow.*
 
 
 class movieFragment : Fragment() {
@@ -33,7 +33,10 @@ class movieFragment : Fragment() {
 
 
     private fun onClick(data: ResultsItemMovie) {
+
         val intent = Intent(activity, Detail::class.java)
+        val uri = Uri.parse("" + Base.newInstance().URIMovie + "/" + data.id)
+        intent.setData(uri)
         intent.putExtra("DATA", data)
         startActivity(intent)
     }
@@ -57,11 +60,10 @@ class movieFragment : Fragment() {
             adapter = adapterMovie
         }
 
-        mainViewModel.setStatus().observe(this, Observer {status ->
-            if (status ?: true){
+        mainViewModel.setStatus().observe(this, Observer { status ->
+            if (status ?: true) {
                 pBar.visibility = View.VISIBLE
-            }
-            else{
+            } else {
                 pBar.visibility = View.GONE
             }
 
@@ -71,7 +73,7 @@ class movieFragment : Fragment() {
             override fun onChanged(dataMovie: List<ResultsItemMovie>?) {
                 if (dataMovie != null) {
                     adapterMovie.setData(dataMovie as java.util.ArrayList<ResultsItemMovie>)
-              //      movieData.clear()
+                    //      movieData.clear()
                     adapterMovie.notifyDataSetChanged()
                 }
             }

@@ -7,16 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.submission2.R
-import com.example.submission2.SQLite.dataFavMovie
-import com.example.submission2.SQLite.dataFavTV
+import com.example.submission2.TVshow.ResultsItemTv
 import com.example.submission2.movie.ResultsItemMovie
 import kotlinx.android.synthetic.main.layoutfav.view.*
 
-class MovieAdapterFav(val ctx: Context?,
-                      private val onClick: (dataFavMovie) -> Unit,
-                      private val mList: List<dataFavMovie>):
-    RecyclerView.Adapter<MovieAdapterFav.FavHolder>()
-{
+class MovieAdapterFav(
+    val ctx: Context?,
+    private val onClick: (ResultsItemMovie) -> Unit,
+    private val mList: List<ResultsItemMovie>
+) :
+    RecyclerView.Adapter<MovieAdapterFav.FavHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavHolder {
         return FavHolder(
@@ -40,12 +40,13 @@ class MovieAdapterFav(val ctx: Context?,
         }
     }
 
-    class FavHolder(v: View): RecyclerView.ViewHolder(v) {
+    class FavHolder(v: View) : RecyclerView.ViewHolder(v) {
 
-        fun bind(item: dataFavMovie) = itemView.apply {
+        fun bind(item: ResultsItemMovie) = itemView.apply {
             tv_item_nameFav.text = item.title
             tv_item_deskriptionFav.text = item.overview
-            Glide.with(img_item_photoFav.context).load("https://image.tmdb.org/t/p/w185" + item.backdropPath)
+            Glide.with(img_item_photoFav.context)
+                .load("https://image.tmdb.org/t/p/w185" + item.backdropPath)
                 .into(img_item_photoFav)
         }
 
