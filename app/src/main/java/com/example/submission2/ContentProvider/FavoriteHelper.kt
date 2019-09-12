@@ -10,7 +10,6 @@ import com.example.submission2.SQLite.DbHelper
 
 class FavoriteHelper(private val context: Context) {
     private var dataBaseHelper: DbHelper? = null
-
     private var database: SQLiteDatabase? = null
 
     @Throws(SQLException::class)

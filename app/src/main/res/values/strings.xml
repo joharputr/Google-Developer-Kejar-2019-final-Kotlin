@@ -81,4 +81,5 @@
     <string name="action_search">search</string>
     <string name="favourite_list">Favorite</string>
     <string name="empty_text">kosong</string>
+    <string name="toast_failed">failed bos</string>
 </resources>

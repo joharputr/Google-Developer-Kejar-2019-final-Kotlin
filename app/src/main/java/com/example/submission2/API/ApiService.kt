@@ -30,5 +30,11 @@ interface ApiService {
             "query"
         ) querySearch: String?
     ): Call<Response>
+    @GET("discover/movie")
+    abstract fun getmovieToday(
+        @Query("api_key") apiKey: String, @Query("language") language: String, @Query(
+            "primary_release_date.gte"
+        ) page: String, @Query("primary_release_date.lte") region: String
+    ): Call<Response>
 
 }

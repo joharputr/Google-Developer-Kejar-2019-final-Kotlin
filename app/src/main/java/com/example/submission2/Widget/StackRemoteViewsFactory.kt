@@ -39,7 +39,6 @@ class StackRemoteViewsFactory(private val mContext: Context, intent: Intent) :
             AppWidgetManager.INVALID_APPWIDGET_ID
         )
 
-
     }
 
 

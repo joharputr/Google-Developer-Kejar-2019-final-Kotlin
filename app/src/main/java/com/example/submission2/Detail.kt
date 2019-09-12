@@ -31,7 +31,7 @@ class Detail : AppCompatActivity() {
         uri = intent.data
 
         if (intent.hasExtra("DATA")) {
-            Log.d("masuk","movie");
+            Log.d("masuk", "movie");
             nama.text = data?.title
             deskription.text = data?.overview
             Glide.with(images.context).load("https://image.tmdb.org/t/p/w185" + data?.backdropPath)
@@ -99,16 +99,18 @@ class Detail : AppCompatActivity() {
                     db.close()*/
 
             val cursor = contentResolver.query(
-                Uri.parse(""+Base.newInstance().URIMovie + "/" + data?.id),
+                Uri.parse("" + Base.newInstance().URIMovie + "/" + data?.id),
                 null,
                 null,
                 null,
                 null
             )
 
+            Log.d("cursorTest =", cursor.toString())
+
             if (cursor != null) {
                 if (cursor.moveToFirst()) {
-                    Log.d("masuk","delete fav");
+                    Log.d("masuk", "delete fav");
                     val idIntent = "" + data?.id
                     val movieId =
                         Base.newInstance().getColumnString(cursor, Base.dataBaseSQl.COLUMN_NAME_ID)
@@ -121,6 +123,9 @@ class Detail : AppCompatActivity() {
                                 Uri.parse("" + Base.newInstance().URIMovie + "/" + data?.id),
                                 null, null
                             )
+
+                            sendUpdateFavoriteList(this)
+
                             Toast.makeText(
                                 this,
                                 "" + data?.title.toString() + " removed",
@@ -138,7 +143,7 @@ class Detail : AppCompatActivity() {
                             values.put(Base.dataBaseSQl.COLUMN_NAME_DESC, data?.overview)
                             values.put(Base.dataBaseSQl.COLUMN_NAME_IMAGE, data?.backdropPath)
                             contentResolver.insert(Base.newInstance().URIMovie, values)
-
+                            sendUpdateFavoriteList(this)
                             Toast.makeText(
                                 this,
                                 "" + data?.title + "added to favorite",
@@ -149,10 +154,8 @@ class Detail : AppCompatActivity() {
                             btnFav.visibility = View.VISIBLE
                         }
                     }
-                }
-                cursor.close()
-            } else {
-                Log.d("masuk","insert fav");
+                } else {
+                    Log.d("masuk", "insert fav");
                     btnTambahFav.visibility = View.VISIBLE
                     btnFav.visibility = View.GONE
                     btnTambahFav.setOnClickListener {
@@ -163,19 +166,38 @@ class Detail : AppCompatActivity() {
                         values.put(Base.dataBaseSQl.COLUMN_NAME_DESC, data?.overview)
                         values.put(Base.dataBaseSQl.COLUMN_NAME_IMAGE, data?.backdropPath)
                         contentResolver.insert(Base.newInstance().URIMovie, values)
-                        Toast.makeText(this, "" + data?.title + "added to favorite", Toast.LENGTH_SHORT).show()
+
+                        sendUpdateFavoriteList(this)
+                        Toast.makeText(
+                            this,
+                            "" + data?.title + "added to favorite",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
                         btnTambahFav.visibility = View.GONE
                         btnFav.visibility = View.VISIBLE
                     }
 
                     btnFav.setOnClickListener {
                         //    helper.removefromfavMovie(data?.id.toString())
-                        contentResolver.delete(Uri.parse("" + Base.newInstance().URIMovie + "/" + data?.id), null, null)
-                        Toast.makeText(this, "" + data?.title.toString() + "removed", Toast.LENGTH_SHORT).show()
+                        contentResolver.delete(
+                            Uri.parse("" + Base.newInstance().URIMovie + "/" + data?.id),
+                            null,
+                            null
+                        )
+                        sendUpdateFavoriteList(this)
+                        Toast.makeText(
+                            this,
+                            "" + data?.title.toString() + "removed",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         btnTambahFav.visibility = View.VISIBLE
                         btnFav.visibility = View.GONE
                     }
                 }
+
+            }
+            //   cursor.close()
 
         } else if (intent.hasExtra("tv")) {
             nama.text = tv?.name
@@ -234,6 +256,8 @@ class Detail : AppCompatActivity() {
             c.close()
             db.close()
         }
+
+
 
         setSupportActionBar(toolbar1)
 

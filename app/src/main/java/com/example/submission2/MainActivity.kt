@@ -3,10 +3,12 @@ package com.example.submission2
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.example.submission2.Favorite.FavoriteActivity
+import com.example.submission2.Reminder.SettingFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 @Suppress("UNREACHABLE_CODE")
@@ -39,6 +41,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun setFragment(fragment: Fragment, title: String) {
+        this.title = title
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment)
+            .commit()
+    }
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle presses on the action bar menu items
         when (item.itemId) {
@@ -49,6 +59,12 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.FAVORITE -> {
                 val intent = Intent(this, FavoriteActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            R.id.reminder -> {
+
+                val intent = Intent(this, SettingActivity::class.java)
                 startActivity(intent)
                 return true
             }

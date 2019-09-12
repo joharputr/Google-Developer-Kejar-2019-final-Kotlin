@@ -11,8 +11,29 @@ class FavouriteProvider : ContentProvider() {
 
     private var favouriteHelper: FavoriteHelper? = null
 
+    companion object {
+
+        private val MOVIE = 1
+        private val MOVIE_ID = 2
+
+        private val sUriMatcher = UriMatcher(UriMatcher.NO_MATCH)
+
+        init {
+
+            // content://com.dicoding.mynotesapp/note
+            sUriMatcher.addURI(Base.newInstance().AUTHORITY, "GDKMovie", MOVIE)
+
+            // content://com.dicoding.mynotesapp/note/id
+            sUriMatcher.addURI(
+                Base.newInstance().AUTHORITY,
+                "GDKMovie" + "/#",
+                MOVIE_ID
+            )
+        }
+    }
+
     override fun onCreate(): Boolean {
-        favouriteHelper = FavoriteHelper(context)
+        favouriteHelper = FavoriteHelper(context!!)
         favouriteHelper!!.open()
         return true
     }
@@ -27,12 +48,12 @@ class FavouriteProvider : ContentProvider() {
         val cursor: Cursor?
         when (sUriMatcher.match(uri)) {
             MOVIE -> cursor = favouriteHelper!!.queryProvider()
-            MOVIE_ID -> cursor = favouriteHelper!!.queryByIdProvider(uri.lastPathSegment)
+            MOVIE_ID -> cursor = favouriteHelper!!.queryByIdProvider(uri.lastPathSegment!!)
             else -> cursor = null
         }
 
         if (cursor != null) {
-            cursor!!.setNotificationUri(context!!.contentResolver, uri)
+            cursor.setNotificationUri(context!!.contentResolver, uri)
         }
 
         return cursor
@@ -55,7 +76,7 @@ class FavouriteProvider : ContentProvider() {
         if (added > 0) {
             context!!.contentResolver.notifyChange(uri, null)
         }
-        return Uri.parse(""+ Base.newInstance().URIMovie + "/" + added)
+        return Uri.parse("" + Base.newInstance().URIMovie + "/" + added)
     }
 
 
@@ -92,25 +113,5 @@ class FavouriteProvider : ContentProvider() {
         return deleted
     }
 
-    companion object {
-
-        private val MOVIE = 1
-        private val MOVIE_ID = 2
-
-        private val sUriMatcher = UriMatcher(UriMatcher.NO_MATCH)
-
-        init {
-
-            // content://com.dicoding.mynotesapp/note
-            sUriMatcher.addURI( Base.newInstance().AUTHORITY,"GDKMovie", MOVIE)
-
-            // content://com.dicoding.mynotesapp/note/id
-            sUriMatcher.addURI(
-                Base.newInstance().AUTHORITY,
-                "GDKMovie"+ "/#",
-                MOVIE_ID
-            )
-        }
-    }
 
 }
