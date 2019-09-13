@@ -96,7 +96,7 @@ class ReleaseTodayReminder : BroadcastReceiver() {
 
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, 8)
-            calendar.set(Calendar.MINUTE, 0)
+            calendar.set(Calendar.MINUTE, 45)
 
             alarmManager.setInexactRepeating(
                 AlarmManager.RTC_WAKEUP,

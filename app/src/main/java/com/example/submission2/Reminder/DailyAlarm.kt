@@ -85,8 +85,8 @@ class DailyAlarm : BroadcastReceiver() {
 
         val calendar = Calendar.getInstance()
 
-        calendar.set(Calendar.HOUR_OF_DAY, 9)
-        calendar.set(Calendar.MINUTE, 14)
+        calendar.set(Calendar.HOUR_OF_DAY, 8)
+        calendar.set(Calendar.MINUTE, 0)
         Log.d("calendar=", calendar.toString())
         alarmManager.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,

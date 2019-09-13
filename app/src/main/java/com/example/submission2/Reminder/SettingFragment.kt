@@ -4,8 +4,6 @@ import android.os.Build
 import android.os.Bundle
 import android.preference.Preference
 import android.preference.SwitchPreference
-import android.support.v14.preference.PreferenceFragment
-import android.support.v7.preference.PreferenceFragmentCompat
 import android.util.Log
 import android.widget.Toast
 import com.example.submission2.API.NetworkConfig
@@ -22,7 +20,6 @@ class SettingFragment : android.preference.PreferenceFragment(),
     Preference.OnPreferenceChangeListener {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         addPreferencesFromResource(R.xml.preferences)
@@ -33,6 +30,7 @@ class SettingFragment : android.preference.PreferenceFragment(),
         val switchUpcomingReminder = findPreference("key_release_reminder") as SwitchPreference
         switchUpcomingReminder.onPreferenceChangeListener = this
     }
+
     private var nowPlayMovies = ArrayList<ResultsItemMovie>()
 
     private val dailyAlarmReceiver = DailyAlarm()
@@ -94,13 +92,16 @@ class SettingFragment : android.preference.PreferenceFragment(),
                     for (i in nowPlayMovies.indices) {
 
                         val movie = nowPlayMovies[i]
-
-
                         Log.d("", "onResponseFIlem: $todayMovie")
                         Log.d("", "onResponse: " + todayMovie.size)
                     }
 
-                    todayMovie.addAll(nowPlayMovies)
+                    for (movieResult in nowPlayMovies) {
+                        todayMovie.addAll(listOf(movieResult))
+                        Log.v("adakah", "" + todayMovie.size)
+                    }
+
+
                     Log.d("", "onResponseFIlem: $todayMovie")
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         releaseTodayReminder.setRepeatingAlarm(context, todayMovie)
