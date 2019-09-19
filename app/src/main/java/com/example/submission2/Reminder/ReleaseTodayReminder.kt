@@ -20,18 +20,18 @@ import java.util.*
 
 class ReleaseTodayReminder : BroadcastReceiver() {
 
-    companion object {
+        companion object {
 
-        private var notifId: Int = 0
-        private fun getPendingIntent(context: Context): PendingIntent {
-            val intent = Intent(context, DailyAlarm::class.java)
-            return PendingIntent.getBroadcast(
-                context,
-                101,
-                intent,
-                PendingIntent.FLAG_CANCEL_CURRENT
-            )
-        }
+            private var notifId: Int = 0
+            private fun getPendingIntent(context: Context): PendingIntent {
+                val intent = Intent(context, DailyAlarm::class.java)
+                return PendingIntent.getBroadcast(
+                    context,
+                    101,
+                    intent,
+                    PendingIntent.FLAG_CANCEL_CURRENT
+                )
+            }
     }
 
     override fun onReceive(context: Context, intent: Intent) {
@@ -54,7 +54,7 @@ class ReleaseTodayReminder : BroadcastReceiver() {
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(title)
-            .setContentText("Today $title release")
+            .setContentText("release film for Today is $title ")
             .setAutoCancel(true)
             .setColor(ContextCompat.getColor(context, android.R.color.transparent))
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
@@ -96,7 +96,8 @@ class ReleaseTodayReminder : BroadcastReceiver() {
 
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, 8)
-            calendar.set(Calendar.MINUTE, 45)
+            calendar.set(Calendar.MINUTE, 0)
+            calendar.set(Calendar.SECOND,0)
 
             alarmManager.setInexactRepeating(
                 AlarmManager.RTC_WAKEUP,
@@ -109,7 +110,7 @@ class ReleaseTodayReminder : BroadcastReceiver() {
             notifDelay += 1000
         }
 
-        Toast.makeText(context, "Release reminder set up", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Release reminder active", Toast.LENGTH_SHORT).show()
 
     }
 

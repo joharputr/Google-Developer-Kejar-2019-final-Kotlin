@@ -89,20 +89,14 @@ class SettingFragment : android.preference.PreferenceFragment(),
                 if (response.isSuccessful()) {
                     val todayMovie = ArrayList<ResultsItemMovie>()
                     nowPlayMovies = response.body()?.results!!
-                    for (i in nowPlayMovies.indices) {
-
-                        val movie = nowPlayMovies[i]
-                        Log.d("", "onResponseFIlem: $todayMovie")
-                        Log.d("", "onResponse: " + todayMovie.size)
-                    }
 
                     for (movieResult in nowPlayMovies) {
                         todayMovie.addAll(listOf(movieResult))
-                        Log.v("adakah", "" + todayMovie.size)
+                        Log.v("cek data", "" + todayMovie.size)
                     }
 
 
-                    Log.d("", "onResponseFIlem: $todayMovie")
+
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         releaseTodayReminder.setRepeatingAlarm(context, todayMovie)
                     }

@@ -1,5 +1,6 @@
 package com.example.favoriteapp
 
+import android.content.Intent
 import android.database.Cursor
 import android.os.AsyncTask
 import android.os.Bundle
@@ -11,24 +12,37 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
-    private var list: Cursor? = null
-    private var array = ArrayList<ResultsItemMovie>()
+class MainActivity : AppCompatActivity(), helper {
 
-   lateinit var adapter: MovieAdapter
+
+    override fun Data(resultsItemMovie: ResultsItemMovie) {
+
+    }
+
+    private var list: Cursor? = null
+    private var list2: Cursor? = null
+
+    private var array: java.util.ArrayList<ResultsItemMovie>? =
+        java.util.ArrayList()
+
+    var adapter = MovieAdapter(array!!, this::onClick)
+
+    private fun onClick(itemMovie: ResultsItemMovie) {
+        val intent = Intent(applicationContext, Detail::class.java)
+        intent.putExtra("DATA", itemMovie)
+        startActivity(intent)
+    }
+
     var helper = MappingHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         progressBar.visibility = View.VISIBLE
         LoadFavouriteAsync().execute()
-
-
-
-
-        adapter = MovieAdapter(array, this@MainActivity)
-
+        Log.d("arrayList=", array.toString())
+        adapter = MovieAdapter(array!!, this::onClick)
     }
+
 
     override fun onResume() {
         super.onResume()
@@ -52,11 +66,15 @@ class MainActivity : AppCompatActivity() {
             progressBar!!.visibility = View.GONE
 
             list = items
+
             array = helper.mapCursorToArrayList(list!!)
-            adapter = MovieAdapter(array, this@MainActivity)
-            Log.d("array=",array.toString())
+            adapter.setListFavourite(array!!)
+
+            Log.d("array=", array.toString())
             movieRecyclerview.layoutManager = LinearLayoutManager(this@MainActivity)
-            movieRecyclerview.adapter = MovieAdapter(array, this@MainActivity)
+            movieRecyclerview.adapter = adapter
+
+
             if (list!!.count == 0) {
                 Toast.makeText(this@MainActivity, "data kososng", Toast.LENGTH_SHORT).show()
             }

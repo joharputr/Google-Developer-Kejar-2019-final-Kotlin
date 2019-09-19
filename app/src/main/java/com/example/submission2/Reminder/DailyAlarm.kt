@@ -55,7 +55,7 @@ class DailyAlarm : BroadcastReceiver() {
         val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle(title)
+            .setContentTitle("GDK Dicoding")
             .setContentText(message)
             .setAutoCancel(true)
             .setColor(ContextCompat.getColor(context, android.R.color.transparent))
@@ -80,13 +80,14 @@ class DailyAlarm : BroadcastReceiver() {
     }
 
     fun setRepeatingAlarm(context: Context) {
-        cancelAlarm(context)
+       cancelAlarm(context)
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         val calendar = Calendar.getInstance()
 
-        calendar.set(Calendar.HOUR_OF_DAY, 8)
+        calendar.set(Calendar.HOUR_OF_DAY, 7)
         calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND,0)
         Log.d("calendar=", calendar.toString())
         alarmManager.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,

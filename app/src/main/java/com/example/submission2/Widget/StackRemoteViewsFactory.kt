@@ -19,9 +19,6 @@ import com.example.submission2.TVshow.ResultsItemTv
 import java.util.concurrent.ExecutionException
 
 
-/**
- * Implementation of App Widget functionality.
- */
 
 class StackRemoteViewsFactory(private val mContext: Context, intent: Intent) :
     RemoteViewsService.RemoteViewsFactory {

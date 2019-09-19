@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.example.submission2.R
+import com.example.submission2.SettingActivity
 import kotlinx.android.synthetic.main.activity_favorite.*
 
 
@@ -44,6 +45,17 @@ class FavoriteActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_change_settings -> {
                 val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+                startActivity(intent)
+                return true
+            }
+            R.id.FAVORITE -> {
+                val intent = Intent(this, FavoriteActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            R.id.reminder -> {
+
+                val intent = Intent(this, SettingActivity::class.java)
                 startActivity(intent)
                 return true
             }

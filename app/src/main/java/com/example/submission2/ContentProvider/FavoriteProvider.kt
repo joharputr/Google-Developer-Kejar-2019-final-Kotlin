@@ -20,10 +20,8 @@ class FavouriteProvider : ContentProvider() {
 
         init {
 
-            // content://com.dicoding.mynotesapp/note
             sUriMatcher.addURI(Base.newInstance().AUTHORITY, "GDKMovie", MOVIE)
 
-            // content://com.dicoding.mynotesapp/note/id
             sUriMatcher.addURI(
                 Base.newInstance().AUTHORITY,
                 "GDKMovie" + "/#",

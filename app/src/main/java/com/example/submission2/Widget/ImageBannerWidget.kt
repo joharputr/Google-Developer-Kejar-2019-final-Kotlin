@@ -32,9 +32,7 @@ class ImageBannerWidget : AppWidgetProvider() {
         // Enter relevant functionality for when the last widget is disabled
     }
 
-    //Kode di bawah akan dijalankan ketika widget ditekan. Seperti pada latihan sebelumnya,
-    // percabangan digunakan untuk membedakan action yang terjadi.
-    // Kita dapat mengambil data action tersebut dengan memanfaatkan extra dari sebuah intent.
+
     override fun onReceive(context: Context, intent: Intent) {
         val mgr = AppWidgetManager.getInstance(context)
         if (intent.action == TOAST_ACTION) {
